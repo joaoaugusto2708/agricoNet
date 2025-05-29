@@ -1,12 +1,10 @@
 package com.br.SensorService.service;
 
 import com.br.SensorService.model.LeituraSilo;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -20,10 +18,12 @@ public class LeitorArquivoService {
     public LeitorArquivoService(PublicadorRabbitService publicadorRabbitService) {
         this.publicadorRabbitService = publicadorRabbitService;
     }
-    public List<LeituraSilo> lerArquivo(String caminhoArquivo) {
+    @Scheduled(fixedRate = 60000)
+    public List<LeituraSilo> lerArquivo() {
+        File file = new File("/data/silos.txt");
         List<LeituraSilo> leituras = new ArrayList<>();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             String linha;
             while ((linha = br.readLine()) != null) {
                 LeituraSilo leituraSilo = parseLinha(linha);
