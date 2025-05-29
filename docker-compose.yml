@@ -66,6 +66,19 @@ services:
     networks:
       - app-network
 
+  dashboard-api:
+    build:
+      context: ./DashboardAPI
+    container_name: DashboardAPI
+    ports:
+      - "8081:8081"
+      - "8080:8080"
+      - "7159:7159"
+      - "5164:5164"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
 
 networks:
   app-network:
