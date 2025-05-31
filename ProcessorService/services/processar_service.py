@@ -36,9 +36,7 @@ def processar_mensagens(mensagens):
         print(f"✅ Dados do silo {silo_id} processados com sucesso.")
 
 def construir_data_hora(data_list, hora_list):
-    """
-    Constrói um objeto datetime a partir dos arrays de data e hora.
-    """
+
     try:
         ano, mes, dia = data_list
         hora, minuto = hora_list

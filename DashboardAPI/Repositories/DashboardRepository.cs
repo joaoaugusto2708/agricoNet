@@ -26,15 +26,15 @@ namespace DashboardAPI.Repositories
         {
             const string sql = @"
             SELECT * FROM temperatura
-            WHERE data_hora >= NOW() - INTERVAL 1 DAY
-            ORDER BY data_hora DESC";
+            WHERE dataMedicao >= NOW() - INTERVAL 7 DAY
+            ORDER BY dataMedicao DESC";
             using var connection = _connectionFactory.CreateConnection();
             return await connection.QueryAsync<Temperatura>(sql);
         }
 
         public async Task<IEnumerable<Alarme>> ObterAlarmesAsync()
         {
-            const string sql = "SELECT * FROM alarme ORDER BY data_hora DESC";
+            const string sql = "SELECT * FROM alarme ORDER BY dataHoraAlarme DESC";
             using var connection = _connectionFactory.CreateConnection();
             return await connection.QueryAsync<Alarme>(sql);
         }

@@ -4,7 +4,7 @@ def inserir_temperatura(silo_id, temperatura, data_hora):
     conn = get_connection()
     cursor = conn.cursor()
     sql = """
-    INSERT INTO temperatura (silo_id, temperatura, data_hora)
+    INSERT INTO temperatura (siloId, temperaturaSilo, dataMedicao)
     VALUES (%s, %s, %s)
     """
     try:

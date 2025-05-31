@@ -6,6 +6,6 @@
         public int SiloId { get; set; }
         public string? Tipo { get; set; }
         public string? Descricao { get; set; }
-        public DateTime DataHora { get; set; }
+        public DateTime DataHoraAlarme { get; set; }
     }
 }

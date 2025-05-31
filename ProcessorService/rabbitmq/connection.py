@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_connection(max_retries=10, delay=5):
+def get_connection(max_retries=10, delay=10):
     print("RABBITMQ_HOST:", os.getenv('RABBITMQ_HOST'))
     print("RABBITMQ_PORT:", os.getenv('RABBITMQ_PORT'))
     print("RABBITMQ_USER:", os.getenv('RABBITMQ_USER'))

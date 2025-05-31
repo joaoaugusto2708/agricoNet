@@ -4,7 +4,7 @@ from datetime import datetime
 @dataclass
 class Alarme:
     id: int
-    silo_id: int
+    siloId : int
     tipo: str
     descricao: str
-    data_hora: datetime
+    dataHoraAlarme: datetime

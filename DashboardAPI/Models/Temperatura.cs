@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public int SiloId { get; set; }
-        public float Valor { get; set; }
-        public DateTime DataHora { get; set; }
+        public float TemperaturaSilo { get; set; }
+        public DateTime DataMedicao { get; set; }
     }
 
 }

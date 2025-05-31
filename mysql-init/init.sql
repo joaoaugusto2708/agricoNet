@@ -24,13 +24,13 @@ DROP TABLE IF EXISTS `alarme`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `alarme` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `silo_id` int NOT NULL,
+  `siloId` int NOT NULL,
   `tipo` varchar(50) NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
-  `data_hora` datetime NOT NULL,
+  `dataHoraAlarme` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `silo_id` (`silo_id`),
-  CONSTRAINT `alarme_ibfk_1` FOREIGN KEY (`silo_id`) REFERENCES `silo` (`id`)
+  KEY `siloId` (`siloId`),
+  CONSTRAINT `alarme_ibfk_1` FOREIGN KEY (`siloId`) REFERENCES `silo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -78,12 +78,12 @@ DROP TABLE IF EXISTS `temperatura`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `temperatura` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `silo_id` int NOT NULL,
-  `temperatura` float NOT NULL,
-  `data_hora` datetime NOT NULL,
+  `siloId` int NOT NULL,
+  `temperaturaSilo` float NOT NULL,
+  `dataMedicao` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `silo_id` (`silo_id`),
-  CONSTRAINT `temperatura_ibfk_1` FOREIGN KEY (`silo_id`) REFERENCES `silo` (`id`)
+  KEY `siloId` (`siloId`),
+  CONSTRAINT `temperatura_ibfk_1` FOREIGN KEY (`siloId`) REFERENCES `silo` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
