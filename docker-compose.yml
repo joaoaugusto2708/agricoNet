@@ -5,8 +5,8 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     ports:
-      - "5672:5672"        # Porta AMQP
-      - "15672:15672"      # UI de administração
+      - "5672:5672"
+      - "15672:15672"
     environment:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=admin
@@ -26,7 +26,7 @@ services:
       - "3308:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./mysql-init:/docker-entrypoint-initdb.d 
+      - ./mysql-init:/docker-entrypoint-initdb.d
     networks:
       - app-network
 
@@ -77,6 +77,17 @@ services:
       - "5164:5164"
     depends_on:
       - mysql
+    networks:
+      - app-network
+
+  dashboard-silo:
+    build:
+      context: ./dashboard-silo
+    container_name: dashboard-silo
+    ports:
+      - "3000:3000"
+    depends_on:
+      - dashboard-api
     networks:
       - app-network
 
